@@ -141,27 +141,19 @@
         let inventoryVisible = false;
 
         function showInventory() {
-            /*Navn på funksjonen er "showInventory*/
 
             let inventoryBlob = document.getElementById("inventoryId");
-            /* "let" er en variabel. "inventoryBlob" er navnet på denne variabelen. 
-               "inventoryBlob" variabelen sin jobb er å huske "inventoryId" sin data */
             let button = document.getElementById("openAndClose");
-            /*"button" variabelen sin jobb er å huske "openAndClose sin informasjon*/
+           let characterSteve = document.getElementById("Steve2");
 
-            let characterSteve = document.getElementById("Steve2");
-
-
-            if (!inventoryVisible)
-   {
+      if (!inventoryVisible)   {
                 inventoryBlob.style.display = "flex";
                 button.innerText = "Close Inventory▶️";
                 characterSteve.style.display = "none";
-                inventoryVisible = true;
+                inventoryVisible = true;  
             }
 
-            /*Hvis informasjonen på begge siden av "==" tegnene IKKE er lik så skal det som står inne i { } tegnene  "else" bli urført*/
-            else {
+     else {
                 inventoryBlob.style.display = "none";
                 button.innerText = "Open Inventory▶️";
                 characterSteve.style.display = "flex";
