@@ -1,77 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Globe</title>
-    <link rel="stylesheet" href="style.css">
-    
-      <style>
-        .button1 {
-        border: none;
-        color: rgb(17, 0, 255);
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 6px;
-        margin: 4px 2px;
-        cursor: pointer;
+    <meta name="viewport" content="width='device-width', initial-scale=1.0">
+    <title>TeamOppgave</title>
+    <style>
+        .inventoryClass {
+            
+            top: 50px;
+            left: 80px;
+           
+            grid-template-columns: repeat(4, 1fr);
+            position: fixed;
+            border-color: black;
+            border-radius: 50px;
+            border-style: ridge;
+            border-width: 10px;
+            scale: 50%;
+            background-color: rgb(27, 157, 243);
+            flex-direction: grid;
+            margin: 40px;
+            padding: 40px;
+            text-align: center;
+        }
+        .pictures {
+            display: flex;
+            border: 10px;
+            border-style: solid;
+            border-color: black;
+            scale: 70%; 
         }
 
-    .a{text-decoration: none;
-        color:red;}
-    .b{text-decoration: none;
-        color:rgb(6, 150, 1);} 
-    .c{text-decoration-style:none;
-        color:blue;}
- </style>
-  </head>
+        .character {
+        position: fixed;
+        top: 450px;
+        left:105px;
+        scale: 150%;
+        
+        
+            transform: translate(60px,120px)"
+        
+        }
+        .button {
+            margin-top: 360px ;
+            margin-left: 170px;
+        }
+
+    </style>
+</head>
 
 <body>
-    <h1>Viktige nettsider om coding</h1>
-    <p id="P1">This is an initial paragraph</p>
-    <p id="P2"><b>W3schools.com</b></p>
-    <p id="P3"><a class="a" href="https://www.w3schools.com/"><b>Home page<b></a></p>  
-    <p id="P4"><a class="b" href="https://www.w3schools.com/tags/ref_byfunc.asp">Basic Html</a></p>      
-    <p id="P5"><a class="c" href="https://www.w3schools.com/css/css3_flexbox.asp">CSS Flexbox</a></p>
-    <p id="P6"><a href="https://www.w3schools.com/cssref/index.php">CSS Reference</a></p>
-   
-    <button class="button1" onclick="goBack()">Back</a></button>
-    <button class="button1" onclick="goToNext()">Next</button>   
-     <script>
 
-        var OriginalContent = {
-        "P1": "This is an initial paragraph",
-        "P2": "<b>W3schools.com</b>",
-        "P3": '<a class="a" href="https://www.w3schools.com/"><b>Home page<b></a>',
-        "P4": '<a class="b" href="https://www.w3schools.com/tags/ref_byfunc.asp">Basic Html</a>',
-        "P5": '<a class="c" href="https://www.w3schools.com/css/css3_flexbox.asp">CSS Flexbox</a>',
-        "P6": '<a href="https://www.w3schools.com/cssref/index.php">CSS Reference</a>',
-         };
+    <button id="openAndClose" class="button" onclick="showInventory()"
+    >Open Inventory▶️</button>
+    
 
-        function goToNext(){
-        document.getElementById("P1").innerHTML = "NewText!";
-        document.getElementById("P2").innerHTML = "NewText!";
-        document.getElementById("P3").innerHTML = "NewText!";
-        document.getElementById("P4").innerHTML = "NewText!";
-        document.getElementById("P5").innerHTML = "NewText!";
-        document.getElementById("P6").innerHTML = "NewText!";
-        }
+    
+    <div class="inventoryClass"
+    id="inventoryId"> <u><b>INVENTORY</b></u>
+
+    <div class="inventory1">
+        <div class="pictures"><img src="https://tiermaker.com/images/chart/chart/minecraft-dark-oak-wood-type-blocks-432324/66png.png" alt=""></div>
+        <div class="pictures"><img src="https://tiermaker.com/images/template_images/2022/1026978/minecraft-all-ores-120-1026978/ironoreje6be4.png" alt=""></div>
+        <div class="pictures"><img src="https://tiermaker.com/images/chart/chart/minecraft-oak-wood-type-blocks-432324/1png.png" alt=""></div>
+    </div>
+    
+    <div class="inventory2">
+        <div class="pictures"><img src="https://tiermaker.com/images/templates/2077871573397056.png" alt=""></div>
+        <div class="pictures"><img src="https://tiermaker.com/images/template_images/2022/1026978/minecraft-all-ores-120-1026978/goldoreje7be4.png" alt=""></div>
+        <div class="pictures"><img src="https://tiermaker.com/images/template_images/2022/1026978/minecraft-all-ores-120-1026978/coaloreje5be4.png" alt=""></div>
+    </div>
+    
+    <div class="inventory3">
+        <div class="pictures"><img src="https://tiermaker.com/images/templates/minecraft-all-ores-120-1026978/10269781685983768.webp" alt=""></div>
+        <div class="pictures"><img src="https://tiermaker.com/images/chart/chart/minecraft-block-tierlist-7591/$-28png" alt=""></div>
+        <div class="pictures"><img src="https://tiermaker.com/images/media/template_images/2024/16364367/minecraft-blocks-16364367/crafting-table.png" alt=""></div>
+    </div>
+    
+</div>
+
+<div id="Steve" class="character"><img src="https://tiermaker.com/images/template_images/2022/15955002/steve-minecraft-skins-15955002/body-3.png"></div>
+
+
+
+
+
+<script>
+    
+    function showInventory() {
+    /*Navn på funksjonen er "showInventory*/
         
-        function goBack() {
-            document.getElementById("P1").innerHTML =OriginalContent["P1"];
-            document.getElementById("P2").innerHTML =OriginalContent["P2"];
-            document.getElementById("P3").innerHTML =OriginalContent["P3"];
-            document.getElementById("P4").innerHTML =OriginalContent["P4"];
-            document.getElementById("P5").innerHTML =OriginalContent["P5"];
-            document.getElementById("P6").innerHTML =OriginalContent["P6"]; 
-        }
-    
-    
+    let inventoryBlob = document.getElementById("inventoryId");
+    /* "let" er en variabel. "inventoryBlob" er navnet på denne variabelen. 
+       "inventoryBlob" variabelen sin jobb er å huske "inventoryId" sin data */
+    let button = document.getElementById("openAndClose");
+    /*"button" variabelen sin jobb er å huske "openAndClose sin informasjon*/
 
- 
-     </script>
- 
-    </body>
+    if (inventoryBlob.style.display  == "none")
+    /* "==" sin jobb er å sammenligne informasjon på høyre og venstre side av "==" tegnene og sjekke om det er likt. (true/false)*/
+
+    {/*HVIS informasjonen er lik på begge sider (true) så skal det som står inne i "{ }" tegnene skje*/ 
+        inventoryBlob.style.display = "flex";
+        button.innerText = "Close Inventory▶️";
+    } else {
+        inventoryBlob.style.display = "none";
+        button.innerText = "Open Inventory▶️";
+    }
+    }
+</script>
+
+</body>
+
+<!--
+    må ha med: 
+
+    - button som heter "show/hide inventory"
+    -character ved siden av inventory button, venstre side.
+    flexbox/grid med inventory
+    -items i rutene
+
+
+    Fint å ha med:
+    
+    -ekstra css styling
+    -butten sin indre html endres til show eller hide avhengig av om innventoryen 
+      vises eller ikke.
+    -items inne i inventoryen   
+-->
+
 </html>
