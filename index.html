@@ -135,33 +135,30 @@
     </div>
 
 
-
     <script>
-
-        let inventoryVisible = false;
-
+    
         function showInventory() {
-
-            let inventoryBlob = document.getElementById("inventoryId");
-            let button = document.getElementById("openAndClose");
-           let characterSteve = document.getElementById("Steve2");
-
-      if (!inventoryVisible)   {
-                inventoryBlob.style.display = "flex";
-                button.innerText = "Close Inventory▶️";
-                characterSteve.style.display = "none";
-                inventoryVisible = true;  
-            }
-
-     else {
-                inventoryBlob.style.display = "none";
-                button.innerText = "Open Inventory▶️";
-                characterSteve.style.display = "flex";
-                inventoryVisible = false;
-            }
+        /*Navn på funksjonen er "showInventory*/
+            
+        let inventoryBlob = document.getElementById("inventoryId");
+        /* "let" er en variabel. "inventoryBlob" er navnet på denne variabelen. 
+           "inventoryBlob" variabelen sin jobb er å huske "inventoryId" sin data */
+        let button = document.getElementById("openAndClose");
+        /*"button" variabelen sin jobb er å huske "openAndClose sin informasjon*/
+    
+        if (inventoryBlob.style.display  == "flex")
+        /* "==" sin jobb er å sammenligne informasjon på høyre og venstre side av "==" tegnene og sjekke om det er likt. (true/false)
+           HVIS informasjonen er lik på begge sider (true) så skal det som står inne i "{ }" tegnene skje*/ 
+        {
+            inventoryBlob.style.display = "none";
+            button.innerText = "Close Inventory▶️";
+        } else {
+            inventoryBlob.style.display = "flex";
+            button.innerText = "Open Inventory▶️";
+        }
         }
     </script>
-
+    
 </body>
 
 </html>
