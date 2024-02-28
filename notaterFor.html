@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <button onclick="loopExample()">trykk for console log demonstrasjon av loop</button>
+  
+
+    <script>
+
+        let maxNumber = 3; //model
+
+        updateView(); //view
+        function updateView() {
+            let html = ''; //html navn på string, står blankt for nå.
+
+            for (let number = 1; /*this is the initialization*/
+                 number <= maxNumber; /*this is the condition that is checked before 
+                                        each iteration of the loop
+                                        as long as the condition is true, the loop 
+                                        will continue to run, if the condition becomes
+                                        false, the loop will exit.*/
+                 number++) /*this is the update, where you update the counter variable
+                             this part is executed after each iteration of the loop*/
+                {html += `<h${number}>Eksempel på taggen h${number}</h${number}>`;
+                } //<h1> Eksempel på taggen h1 </h1>
+
+            document.getElementById('app').innerHTML = /*HTML*/`
+                <input type="range" min="1" max="10" step="1"
+                    onchange="maxNumber=this.valueAsNumber;updateView()"
+                    value="${maxNumber}"            
+                />        
+                ${html}
+            `;
+        }
+
+        function loopExample(){
+            for (i=1; i<10; i++)
+            {console.log(i)}
+        }
+    //initialization, condition, update
+
+    
+
+    /*Now, let's compare "for" with "if" and "else":
+
+    "if" statement: It is used for conditional execution.
+     If a certain condition is true, a block of code is executed; 
+     otherwise, it's skipped.
+
+    "for" loop: It is used for repetitive tasks, 
+    where you want to perform a specific action multiple times, 
+    often based on an incrementing or decrementing counter.
+
+    In summary, "for" is designed for iteration and repeating a block of code,
+     while "if" is for making decisions based on conditions.*/
+
+
+    </script>
+
+</body>
+
+</html>
