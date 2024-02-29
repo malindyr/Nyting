@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>redo code-along</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+
+        let animals = ['cat', 'dog', 'donkey'];
+        let displayedAnimal = '';
+
+        showDisplay()
+        function showDisplay(){
+            document.getElementById('app').innerHTML = /*HTML*/`
+            <div id="displayDiv">${displayedAnimal}</div>
+            <button onclick="randomAnimal()">click for random animal</button>
+            <button onclick="turtle()">turtle</button>
+            `}
+
+            //let animals = ['cat', 'dog', 'donkey'];
+            function randomAnimal(){
+                let randomIndex = Math.floor(Math.random() * animals.length);
+                displayedAnimal = animals[randomIndex];
+                showDisplay();
+            }
+
+            function turtle(){
+                animals.push('turtle');
+                displayedAnimal = animals[3];
+                showDisplay()
+
+            }
+
+
+
+
+    </script>
+</body>
+</html>
