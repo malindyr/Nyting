@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body
+{
+
+background-color: rgb(255, 255, 255);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.road {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(168, 168, 168);
+    width: 500px; 
+    height: 100%;
+    align-items: center;
+
+ 
+}
+
+.yellow-stripes {
+   background-color: yellow;
+   width: 10px;
+   height: 950px;
+   align-items: center;
+   
+ 
+
+    
+}
+
+  </style>
+</head>
+
+<body>
+    <!-- <div class="yellow-stripes"></div> -->
+    <img src="https://storage.googleapis.com/replit/images/1666693642906_f71145d210ddb6c8335233786c32027d.png">
+
+    <div id="app"></div>
+
+    <script>
+        //Model
+        const app = document.getElementById('app');
+        let coolnessFactor = 100;
+        let upgrades = [];
+        let upgradeTimer; //timer kan senere bli deklarert inne via en funksjon:)
+        let buddyNames = ['ole', 'dole', 'doffen'];
+        let winScreen = '';
+        let chosenCharacter;
+        let answer = "";
+        let greet = "";
+        const maxCoolness = 500;
+        const minCoolness = 0;
+
+            
+        
+        //View
+        updateView();
+        function updateView() {
+            app.innerHTML = /*HTML*/ `
+            <div class="road" id="coolnessFactor">Your car has a coolness factor of ${coolnessFactor}/${maxCoolness}</div>
+            <div id="buddyMet"></div>
+            <div id="answersDispalyDiv">${greet}</div>
+            <div id="winScreen">${winScreen}</div>
+            <div id="answer">${answer}</div>
+            <button id="startBtn" onclick="startGame()">Start game</button>
+            <button onclick="calculateWhichBuddy()">Greet Buddy</button>
+        
+            
+               `;
+        }
+
+        function winScreenView(){
+            app.innerHTML = `Winner chicken dinner`;
+        }
+         //<button onclick=""></button>
+         //<div></div>
+        function greetBuddyView () {
+            greet = `
+            <button onclick="greetBuddy('answer1')">Hei på deg</button>
+            <button onclick="greetBuddy('answer2')">yoyoyo</button>
+            <button onclick="greetBuddy('answer3')">hello sir</button>
+            `}
+        
+
+        //Controller
+
+        function startGame(){
+            upgradeTimer = setInterval(getUpdate, 8000);       
+        } 
+
+        function getUpdate(){
+            if(coolnessFactor>=maxCoolness){
+                alert('you reached max coolness! WINNER CHICKEN DINNER!')
+                // winScreenView()
+            } else {coolnessFactor = coolnessFactor + 10};
+
+            updateView();
+
+        };
+
+        
+function calculateWhichBuddy (){  
+    let buddyMetDiv = document.getElementById('buddyMet')
+    
+    let randomBuddy = Math.floor(Math.random() * buddyNames.length);
+    chosenCharacter = buddyNames[randomBuddy];
+    
+    buddyMetDiv.innerHTML = `you just met ${chosenCharacter}`;
+    greetBuddyView()
+}
+
+function greetBuddy(clickedAnswer){
+    let answerDiv = document.getElementById('answer')
+    if(clickedAnswer == 'answer1' && chosenCharacter == 'ole'){
+        coolnessFactor = coolnessFactor + 20 ;
+        answer = "Du har svart Riktig"
+        greet = ""
+        // answerDiv.innerHTML = `Riktig`
+         
+   } else if (clickedAnswer == 'answer2' && chosenCharacter == 'dole' ){
+        coolnessFactor = coolnessFactor + 20 ;
+        answer = 'Du har svart Riktig'
+        greet = ""
+   }
+   else if (clickedAnswer == 'answer3' && chosenCharacter == 'doffen' ){
+        coolnessFactor = coolnessFactor + 20 ;
+        answer = 'Du har svart Riktig'
+        greet = ""
+   }
+   else {coolnessFactor = coolnessFactor - 20
+   answer = 'Du har svart Feil'
+   greet = ""};
+   updateView();
+}; 
+    </script>
+</body>
+
+</html>
+
+<!-- 
+    const maxPoints = 100;
+        let carPoints = maxPoints;
+
+        function updatePoints() {
+            const randomChange = Math.random() * 20 - 10; // Random value between -10 and 10
+            carPoints += randomChange;
+            carPoints = Math.max(0, Math.min(maxPoints, carPoints)); // Ensure points stay within [0, maxPoints]
+
+            const pointsElement = document.getElementById("points");
+            pointsElement.style.width = `${(carPoints / maxPoints) * 100}%`;  -> Endrer CSS på en progressbar
+            pointsElement.textContent = `${Math.round(carPoints)} points`;
+        }
+
+         // Update points every second (you can adjust the interval)
+             setInterval(updatePoints, 1000);
+-->
+
+ 
