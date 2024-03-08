@@ -3,162 +3,165 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width='device-width', initial-scale=1.0">
-    <title>TeamOppgave</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
-        body {
-            background-color: rgb(94, 110, 87);
-        }
+        body
+{
 
-        .inventoryClass {
+background-color: rgb(255, 255, 255);
+display: flex;
+justify-content: center;
+align-items: center;
+}
 
-            top: 50px;
-            left: 80px;
+.road {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(168, 168, 168);
+    width: 500px; 
+    height: 100%;
+    align-items: center;
 
-            grid-template-columns: repeat(4, 1fr);
-            /*ikke kødd med denne linja*/
-            position: fixed;
-            /*ikke kødd med denne linja*/
-            border-color: black;
-            border-radius: 50px;
-            border-style: ridge;
-            border-width: 10px;
-            scale: 50%;
-            background-color: rgb(27, 157, 243);
-            flex-direction: grid;
-            margin: 40px;
-            padding: 40px;
-            display: none;
-            /*ikke kødd med denne linja*/
+ 
+}
 
-        }
+.yellow-stripes {
+   background-color: yellow;
+   width: 10px;
+   height: 950px;
+   align-items: center;
+   
+ 
 
-        .pictures {
-            display: flex;
-            /*ikke kødd med denne linja*/
-            border: 10px;
-            border-style: solid;
-            border-color: black;
-            scale: 70%;
+    
+}
 
-        }
-
-        .character {
-            position: fixed;
-            top: 400px;
-            left: 100px;
-            scale: 300%;
-
-
-            transform: translate(60px, 120px)"
-
-        }
-
-        .character2 {
-            display: flex;
-            position: fixed;
-            top: 470px;
-            left: 110px;
-            scale: 160%;
-        }
-
-        .button {
-            scale: 130%;
-            background-color: rgb(158, 243, 205);
-            border: solid 2px;
-            border-color: green;
-            padding: 3px;
-
-            margin-top: 360px;
-            margin-left: 170px;
-        }
-
-        .inventoryText {
-            font-size: 100px;
-
-            color: white;
-
-        }
-    </style>
+  </style>
 </head>
 
 <body>
+    <!-- <div class="yellow-stripes"></div> -->
+    <img src="https://storage.googleapis.com/replit/images/1666693642906_f71145d210ddb6c8335233786c32027d.png">
 
-    <button id="openAndClose" class="button" onclick="showInventory()">Open Inventory▶️</button>
-
-
-
-    <div class="inventoryClass" id="inventoryId">
-        <div class="inventoryText">Inventory</div>
-
-        <div id="Steve" class="character"><img
-                src="https://tiermaker.com/images/template_images/2022/15955002/steve-minecraft-skins-15955002/body-3.png">
-        </div>
-        <div class="inventory1">
-            <div class="pictures"><img
-                    src="https://tiermaker.com/images/chart/chart/minecraft-dark-oak-wood-type-blocks-432324/66png.png"
-                    alt=""></div>
-            <div class="pictures"><img
-                    src="https://tiermaker.com/images/template_images/2022/1026978/minecraft-all-ores-120-1026978/ironoreje6be4.png"
-                    alt=""></div>
-            <div class="pictures"><img
-                    src="https://tiermaker.com/images/chart/chart/minecraft-oak-wood-type-blocks-432324/1png.png"
-                    alt=""></div>
-        </div>
-
-        <div class="inventory2">
-            <div class="pictures"><img src="https://tiermaker.com/images/templates/2077871573397056.png" alt=""></div>
-            <div class="pictures"><img
-                    src="https://tiermaker.com/images/template_images/2022/1026978/minecraft-all-ores-120-1026978/goldoreje7be4.png"
-                    alt=""></div>
-            <div class="pictures"><img
-                    src="https://tiermaker.com/images/template_images/2022/1026978/minecraft-all-ores-120-1026978/coaloreje5be4.png"
-                    alt=""></div>
-        </div>
-
-        <div class="inventory3">
-            <div class="pictures"><img
-                    src="https://tiermaker.com/images/templates/minecraft-all-ores-120-1026978/10269781685983768.webp"
-                    alt=""></div>
-            <div class="pictures"><img
-                    src="https://tiermaker.com/images/chart/chart/minecraft-block-tierlist-7591/$-28png" alt=""></div>
-            <div class="pictures"><img
-                    src="https://tiermaker.com/images/media/template_images/2024/16364367/minecraft-blocks-16364367/crafting-table.png"
-                    alt=""></div>
-        </div>
-
-    </div>
-
-
-    <div id="Steve2" class=" character2"><img
-            src=https://tiermaker.com/images/template_images/2022/15955002/steve-minecraft-skins-15955002/body-16.png>
-    </div>
-
+    <div id="app"></div>
 
     <script>
-    
-        function showInventory() {
-        /*Navn på funksjonen er "showInventory*/
+        //Model
+        const app = document.getElementById('app');
+        let coolnessFactor = 100;
+        let upgrades = [];
+        let upgradeTimer; //timer kan senere bli deklarert inne via en funksjon:)
+        let buddyNames = ['ole', 'dole', 'doffen'];
+        let winScreen = '';
+        let chosenCharacter;
+        let answer = "";
+        let greet = "";
+        const maxCoolness = 500;
+        const minCoolness = 0;
+
             
-        let inventoryBlob = document.getElementById("inventoryId");
-        /* "let" er en variabel. "inventoryBlob" er navnet på denne variabelen. 
-           "inventoryBlob" variabelen sin jobb er å huske "inventoryId" sin data */
-        let button = document.getElementById("openAndClose");
-        /*"button" variabelen sin jobb er å huske "openAndClose sin informasjon*/
+        
+        //View
+        updateView();
+        function updateView() {
+            app.innerHTML = /*HTML*/ `
+            <div class="road" id="coolnessFactor">Your car has a coolness factor of ${coolnessFactor}/${maxCoolness}</div>
+            <div id="buddyMet"></div>
+            <div id="answersDispalyDiv">${greet}</div>
+            <div id="winScreen">${winScreen}</div>
+            <div id="answer">${answer}</div>
+            <button id="startBtn" onclick="startGame()">Start game</button>
+            <button onclick="calculateWhichBuddy()">Greet Buddy</button>
+        
+            
+               `;
+        }
+
+        function winScreenView(){
+            app.innerHTML = `Winner chicken dinner`;
+        }
+         //<button onclick=""></button>
+         //<div></div>
+        function greetBuddyView () {
+            greet = `
+            <button onclick="greetBuddy('answer1')">Hei på deg</button>
+            <button onclick="greetBuddy('answer2')">yoyoyo</button>
+            <button onclick="greetBuddy('answer3')">hello sir</button>
+            `}
+        
+
+        //Controller
+
+        function startGame(){
+            upgradeTimer = setInterval(getUpdate, 8000);       
+        } 
+
+        function getUpdate(){
+            if(coolnessFactor>=maxCoolness){
+                alert('you reached max coolness! WINNER CHICKEN DINNER!')
+                // winScreenView()
+            } else {coolnessFactor = coolnessFactor + 10};
+
+            updateView();
+
+        };
+
+        
+function calculateWhichBuddy (){  
+    let buddyMetDiv = document.getElementById('buddyMet')
     
-        if (inventoryBlob.style.display  == "flex")
-        /* "==" sin jobb er å sammenligne informasjon på høyre og venstre side av "==" tegnene og sjekke om det er likt. (true/false)
-           HVIS informasjonen er lik på begge sider (true) så skal det som står inne i "{ }" tegnene skje*/ 
-        {
-            inventoryBlob.style.display = "none";
-            button.innerText = "Close Inventory▶️";
-        } else {
-            inventoryBlob.style.display = "flex";
-            button.innerText = "Open Inventory▶️";
-        }
-        }
+    let randomBuddy = Math.floor(Math.random() * buddyNames.length);
+    chosenCharacter = buddyNames[randomBuddy];
+    
+    buddyMetDiv.innerHTML = `you just met ${chosenCharacter}`;
+    greetBuddyView()
+}
+
+function greetBuddy(clickedAnswer){
+    let answerDiv = document.getElementById('answer')
+    if(clickedAnswer == 'answer1' && chosenCharacter == 'ole'){
+        coolnessFactor = coolnessFactor + 20 ;
+        answer = "Du har svart Riktig"
+        greet = ""
+        // answerDiv.innerHTML = `Riktig`
+         
+   } else if (clickedAnswer == 'answer2' && chosenCharacter == 'dole' ){
+        coolnessFactor = coolnessFactor + 20 ;
+        answer = 'Du har svart Riktig'
+        greet = ""
+   }
+   else if (clickedAnswer == 'answer3' && chosenCharacter == 'doffen' ){
+        coolnessFactor = coolnessFactor + 20 ;
+        answer = 'Du har svart Riktig'
+        greet = ""
+   }
+   else {coolnessFactor = coolnessFactor - 20
+   answer = 'Du har svart Feil'
+   greet = ""};
+   updateView();
+}; 
     </script>
-    
 </body>
 
 </html>
+
+<!-- 
+    const maxPoints = 100;
+        let carPoints = maxPoints;
+
+        function updatePoints() {
+            const randomChange = Math.random() * 20 - 10; // Random value between -10 and 10
+            carPoints += randomChange;
+            carPoints = Math.max(0, Math.min(maxPoints, carPoints)); // Ensure points stay within [0, maxPoints]
+
+            const pointsElement = document.getElementById("points");
+            pointsElement.style.width = `${(carPoints / maxPoints) * 100}%`;  -> Endrer CSS på en progressbar
+            pointsElement.textContent = `${Math.round(carPoints)} points`;
+        }
+
+         // Update points every second (you can adjust the interval)
+             setInterval(updatePoints, 1000);
+-->
+
+ 
