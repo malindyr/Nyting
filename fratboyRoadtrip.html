@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+
+        div {font-size: 40px;
+            color: rgb(54, 65, 75);}
+
+        button { font-size: 30px;}
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+
+
+
+        const app = document.getElementById('app');
+        const maxCoolness = 300;
+        let coolnessFactor = 100;
+       
+
+        let jason = {
+            name      : "Jason",
+            scenario  : "Jason is racing past you in his ultra cool car!<br/>You don't have a lot of time, <br/> think quick! what do you say to impress him?!",
+            buttons   : `<button onclick="handleResponse('yes')">have a nice day Jason!</button>
+                        <button onclick="handleResponse('no')">sick car dude!</button>`,
+            yes   : "yes, you too! + 100",
+            no    : "no, but thanks for noticing! - 100"
+        };
+
+        let brad = {
+            name      : "Brad",
+            scenario  : "Brad is hitchiking on the side of the road, <br/> do you help a dude out?",
+            buttons   : `<button onclick="handleResponse('yes')">tell brad to hop in the car!</button>
+                         <button onclick="handleResponse('no')">accidentally run over Brad</button>`,
+            yes   : 'Brad: "lets ride dude!" + 100',
+            no    : 'Brad does not get hurt, <br/> but he says your driving is uncool. - 100'
+        };
+
+        let chad = {
+            name      : "Chad",
+            scenario  : "Your phone is buzzing, it's Chad! <br/> What's your response?",
+            buttons   : `<button onclick="handleResponse('yes')">answer him later</button>
+                         <button onclick="handleResponse('no')">text the guy back!</button>`,
+            yes   : 'Chad approves of your cool choice to not text and drive. + 100',
+            no    : 'Chad: "texting whilst driving? so uncool dude - 100"'
+        };
+
+
+        let defaultCharacters = [jason, brad, chad];
+        let characters = [jason, brad, chad];
+        let chosenCharacterName;
+        let chosenCharacter;
+        let index;
+        let indexToRemove;
+
+        //add to if else function a function that gives customization things
+        //add function 
+
+        updateView();
+        function updateView() {
+            app.innerHTML = /*HTML*/ `
+            <div id="carCoolnessFactor">your coolness factor is: ${coolnessFactor}/${maxCoolness}</div>
+            <div id="greetBuddiesDiv"></div> 
+            <div id="characterYouMeetDiv"></div>
+            <div id="answersAlternativesDiv"></div>
+            <div id="btnDiv"> <button onclick="newCharacter(); checkCoolness()">drive on!</button> </div>
+                       `;
+        }
+
+        function checkCoolness() {
+            if (coolnessFactor == maxCoolness) {
+                alert('you have reached max coolness!')
+            } else if (coolnessFactor == 0) {
+                app.innerHTML = "Your got crashed into by a much cooler car. <br/> your uncool car did not survive"}
+
+             else { document.getElementById('carCoolnessFactor').innerHTML = `your coolness factor is: ${coolnessFactor}/${maxCoolness}` }
+            }
+
+
+        function newCharacter() {
+
+            if (characters.length == 0) {
+            app.innerHTML = `your coolness factor is: ${coolnessFactor}/${maxCoolness} </br>
+                             it seems like you got stuck on medium coolness... better luck next time. </br>
+                             <button onclick="restart()">try again</button>`
+            
+            }else{
+
+            index = Math.floor(Math.random() * characters.length);
+            chosenCharacterName = characters[index].name;
+            chosenCharacter = characters[index];
+            indexToRemove = characters.indexOf(chosenCharacter);
+        
+           
+            let result = document.getElementById('characterYouMeetDiv');
+            let answers = document.getElementById('answersAlternativesDiv');
+
+            document.getElementById('greetBuddiesDiv').innerHTML = `you just met ${chosenCharacterName}!`
+
+         
+                result.innerHTML = characters[index].scenario;
+                answers.innerHTML = characters[index].buttons;}
+    
+        }
+
+        function handleResponse(response) {
+
+            let result = document.getElementById('characterYouMeetDiv');
+
+            if (response == 'yes') { 
+                result.innerHTML = chosenCharacter.yes;
+                coolnessFactor = coolnessFactor + 100; }
+            else if (response == 'no') { 
+                result.innerHTML = chosenCharacter.no;
+                coolnessFactor = coolnessFactor - 100; };
+
+            if(indexToRemove !== -1) {
+                characters.splice(indexToRemove, 1);
+            }          
+        }
+
+        function restart(){
+
+            coolnessFactor = 100;
+            characters = defaultCharacters;
+        updateView()
+        }
+        updateView()
+
+        /* array.splice(start, deleteCount, item1, item2, ...);
+        start: The index at which to start changing the array.
+        deleteCount: The number of elements to remove from the array.
+        item1, item2, ...: Elements to add to the array at the specified index*/
+    </script>
+</body>
+
+</html>
