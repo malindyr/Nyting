@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add a croissant si vou plait!</title>
+
+    <style>
+        body{
+            background-color: rgb(40, 40, 40);;
+        }
+
+        div{
+            color: skyblue;
+        }
+
+        button{
+            background-color:rgb(0, 157, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script>
+
+        updateView()
+
+        function updateView() {
+            document.getElementById('app').innerHTML = /*HTML*/`
+            <h1>add a croissant si vou plait!</h1>
+            
+            <label for="pastryType">pastry-type</label>
+            <input type="text" id="pastryType">
+            <br/>
+            <label for="pastryDetails">pastry-details</label>
+            <input type="text" id="pastryDetails">
+            <br/>
+            <button onclick="addCroissant()">add your pastry</button>
+            <br/>
+            <div id="newCroissantDiv"></div>
+            `};
+
+        class croissant {
+            constructor(pastryType, pastryDetails) {
+
+                this.pastryType = pastryType;
+                this.pastryDetails = pastryDetails;
+            }
+        };
+
+        const croissantArray = [];
+
+        function addCroissant() {
+
+            const pastryType = document.getElementById('pastryType').value;
+            const pastryDetails = document.getElementById('pastryDetails').value;
+
+            const pastry = new croissant(pastryType, pastryDetails);
+            croissantArray.push(pastry);
+
+            displayCroissant();
+        };
+
+        function displayCroissant(){
+            const croissantContainer = document.getElementById('newCroissantDiv');
+            croissantContainer.innerHTML = '';
+
+            croissantArray.forEach(croissant =>{
+                const freshCroissant = document.createElement('div');
+                freshCroissant.innerHTML = `<div> pastry type: ${croissant.pastryType} <br/> pastry details: ${croissant.pastryDetails}</div>`;
+                croissantContainer.appendChild(freshCroissant);
+
+            })
+        }
+
+    </script>
+</body>
+
+</html>
