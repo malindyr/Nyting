@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(80, 80, 80);
+        }
+
+        .mainDiv {
+            display: flex;
+            padding: 5px;
+        }
+
+        input {
+            margin-left: 2px;
+            margin-right: 2px;
+            width: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script>
+
+//mdl
+    let points = 0;
+    let maxPoints = 5;
+    let inputValue = '';
+    let nr1 = '0';
+    let nr2 = '0';
+    let feedBack = '';
+
+    let eatLeft = ">";
+    let eatRight = "<";
+    let equals = "=";
+
+//vw
+updateView();
+
+    function drawButtons() {
+        let buttons = [`<button onclick="submit()">sumbit</button>`,
+                        `<button onclick="reset()">reset</button>`];   //initially had this in the model
+        let buttonsView = '';   //forgot to write this initially
+            for (let i = 0; i < buttons.length; i++) {
+                buttonsView += buttons[i];  //wrote buttonsView + buttons, then buttonsView += buttons
+            }; 
+            return buttonsView;   //initially returned buttons[i], errrr
+        }
+
+
+    function updateView() {
+        document.getElementById('app').innerHTML =/*HTML*/`
+        <div>points: ${points}/${maxPoints}</div>
+    <div class="mainDiv">
+        <div>${nr1}</div>
+        <input id="inputBlock" type="text">
+        <div>${nr2}</div>
+    </div>
+        <div>${drawButtons()}</div>
+        <div>${feedBack}</div>
+`}
+
+ //cntrllr
+
+    function submit() {
+        inputValue = document.getElementById('inputBlock').value;
+        checkNumbers();
+        };
+
+    function reset(){
+        points = 0;
+        feedBack = '';
+        generateRandomNumber();
+        updateView();
+        }
+
+generateRandomNumber();
+    function generateRandomNumber() {
+        nr1 = Math.floor(Math.random() * 10);
+        nr2 = Math.floor(Math.random() * 10);
+            updateView();
+        };
+
+    function checkNumbers() {
+        if (nr1 < nr2 && inputValue === eatRight) {
+                points = points + 1;
+                feedBack = "correct!"
+        } else if (nr1 > nr2 && inputValue === eatLeft) {
+                points = points + 1;
+                feedBack = "correct!"
+        } else if (nr1 === nr2 && inputValue === equals) {
+                points = points + 1;
+                feedBack = "correct!"
+                //wrote inputValue !== eatright ||	inputValue !== eatLeft
+        } else if (inputValue !== eatRight && inputValue !== eatLeft && inputValue !== equals) {
+                feedBack = "please enter a valid answer"
+        } else {
+                feedBack = "wrong answer :("
+        };  
+        generateRandomNumber();
+        }; 
+
+
+        //function checkNumbers(){
+        //if (nr1)
+        //}
+
+
+        /*
+        funksjon som genererer radom tall nr1 og nr2
+        
+        funksjon som sammenligner input og tall nr1 og nr2
+        
+        left =
+        if tall nr1 >= nr2, && svar er >, +poeng
+        else if nr1 <= nr2, && svar er <, + poeng
+        else FEIL
+        
+        if inputValue == > &&
+        
+        reset knappen setter poeng til 0 og nummer til nye nummer*/
+
+     
+    </script>
+</body>
+
+</html>
