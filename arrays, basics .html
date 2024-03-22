@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        let numbers = [5, 10, 15, 20]; //array declaration. 0 = 5, 1 = 10 and so on...
+        console.log(numbers[1]); //printing the second element
+
+        numbers[2] = 25; 
+        //changing the value of the third value to 25
+        //i am changing this as the second element BEFORE using push and shift later. That is why 2 still has the value of 25 when i later print the array.
+        console.log(numbers[2]); //printing the third element. it used to be 15, but it is now 25, because i modified it before calling console.log
+
+        //numbers[4] = 30;
+        numbers.push(30);
+        console.log(numbers[4]);
+        /*In the first line (numbers[4] = 30;), you are assigning the value 30 to the element at index 4 in the array. 
+        If the array is sparse (it doesn't have elements at indices 0 through 3), this will create empty slots in the array leading up to index 4. 
+        In contrast, the push method adds the element to the end of the array, regardless of the current length or indices.
+
+        If you are working with a scenario where you want to ensure that the element is added to the end of the array and avoid creating sparse arrays, 
+        it's recommended to use push*/
+
+        //numbers.pop[3];
+        //let firstNumber = numbers.pop(0);,    The pop method in JavaScript doesn't take an argument for the index of the element to be removed. 
+                                               //It always removes and returns the last element of the array.
+
+        let firstNumber = numbers.shift();                                      
+        console.log(numbers.length); //printing the lenght of the numbers
+        console.log(numbers);
+
+
+        /*
+        print: 10 - numbers[1], because 5 is [0]
+               25 - numbers[2], because the value was changed from 15 to 25 and it was printed after this change
+               30 - numbers[4], numbers.push(30), adds the number 30 to the array
+                4 - numbers.length, shows the length of the array after using shift to remove the first element.
+               
+               */
+
+
+
+
+
+/*Create an array:
+
+Declare an array named numbers with the following elements: 5, 10, 15, 20.
+Access and Modify:
+
+Print the second element of the numbers array.
+Change the value of the third element to 25.
+Add and Remove:
+
+Add the number 30 to the end of the array.
+Remove the first element of the array.
+Array Length:
+
+Print the length of the numbers array.
+Loop through the Array:
+
+Use a for loop to iterate through each element of the array and print each element.*/
+
+
+
+    /*let fruits = ['apple', 'orange', 'banana', 'grape'];
+
+// Accessing elements by index
+console.log(fruits[0]); // Output: 'apple'
+console.log(fruits[1]); // Output: 'orange'
+
+// Modifying elements
+fruits[2] = 'kiwi';
+
+// Adding elements to the end of the array
+fruits.push('mango');
+
+// Removing the last element from the array
+let lastFruit = fruits.pop();
+
+// Length of the array
+console.log(fruits.length); // Output: 4*/
+</script>
+</body>
+</html>

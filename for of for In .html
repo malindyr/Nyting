@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <script>
+
+        let rocks = ["obsidian", "gneiss", "granite", "diamond"];
+
+        const rockData = {
+            name : "Abesestos",
+            type : "Silicate Minerals",
+            color: "green",
+        }
+
+
+        //regular for loop
+        for(let i = 0; i<rocks.length; i++){
+            console.log("regular loop: " + rocks[i]);
+        }
+
+
+// for of loop. Good for arrays and strings. 
+//(other iterable objects where you want to access the elements directly)
+
+
+        //for of loop
+        //for strings, arrays, (maps, sets etc)
+        for(let rock of rocks){ //each time loop runs, the "let" has another value
+            console.log("of loop: " + rock);
+        };
+
+    /*First Iteration:
+        rock holds the value of the first element in the rocks array.
+        The loop body executes, printing the value of the first element to the console.
+    Second Iteration:
+        rock now holds the value of the second element in the rocks array.
+        The loop body executes again, printing the value of the second element to the console.*/
+
+        //string example
+        for(let char of 'rocks'){ //literally spelling "rocks"
+            console.log(char);
+        }
+
+
+// for in loop. Good for objects 
+//(When you need to iterate over enumerable properties of an object, 
+   //including inherited properties.)
+
+
+
+   /*for...in loop: This is another type of loop in JavaScript, 
+   but it's used to iterate over the properties of an object, 
+   not over iterable values */
+
+        // "for in-dex"
+        for(let rock in rocks){
+            console.log(rock);
+        }
+
+        //using index access
+        for(let rock in rockData){
+            console.log(rockData[rock]);
+        }
+
+        
+        //also using index access ++
+        for(let rock in rockData){
+            console.log(rock + ': ' + rockData[rock]);
+        }
+
+        /*let rock: Similar to before, this line declares a 
+        variable rock to hold each property/index of the 
+        rocks array during each iteration. However, in this case, 
+        rock holds the index of the array, not the value.*/
+
+    </script>
+</body>
+</html>

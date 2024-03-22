@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For loops basics</title>
+    <style>
+        body {
+            background-color: rgb(48, 48, 48);
+            color: rgb(162, 162, 162);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+
+    <script>
+
+        let information = `this is a standard for loop: <br/>` + "for(let i=0; 1>10; 1++){ }";
+        let animalsString = "turtle";
+        let animalsStringArray = ["puffer fish", "turtle", "manta ray", "shark"];
+        let animalsObjects = [
+            {
+                name: "Eagle ray",
+                isThreatened: false,
+                location: "Eastern Atlantic",
+            },
+            {
+                name: "Bat ray",
+                isThreatened: false,
+                location: "Pacific Ocean",
+            }
+        ]
+        let arrayWithinArray = [["sting ray", "manta ray"], ["turtle", "tortoise"]];
+
+
+        updateView()
+        function updateView() {
+            document.getElementById('app').innerHTML = /*HTML*/
+                `<div>${information}</div>
+             <button onclick="runStandardForLoop()">standard for loop, string</button>
+             <button onclick="runArrayForLoop()">with array</button>
+             <button onclick="runObjectForLoop()">with objects</button>
+             <button onclick="nestedLoops()">nested loop</button>
+             <button onclick="nestedLoopDeciphered()">nested loop indepth</button>
+        `};
+
+
+        // if you want to assign a for loop to a variable, you must do it within a function.
+
+        function runStandardForLoop() {
+
+            information = '';
+            for (let i = 0; i < animalsString.length; i++) {
+                information += animalsString[i];
+                updateView()
+                console.log(information);
+            }
+        }
+
+        function runArrayForLoop() {
+
+            information = '';
+            for (let i = 0; i < animalsStringArray.length; i++) {
+                information = animalsStringArray[i];//will jam all the text together if +=
+                updateView();
+                console.log(information);
+            }
+        };
+
+        function runObjectForLoop() {
+
+            for (let i = 0; i < animalsObjects.length; i++) {
+                console.log(`${animalsObjects[i].name} can be found in the ${animalsObjects[i].location}. Is it threatened? ${animalsObjects[i].isThreatened}.`)
+            }
+        }
+
+        function nestedLoops() {
+            for (let i = 0; i < arrayWithinArray.length; i++) {
+
+                let seaCreature = arrayWithinArray[i];
+                for (j = 0; j < seaCreature.length; j++) {
+                    console.log("inner loop: " + seaCreature);
+                }
+            }
+        }
+
+        function nestedLoopDeciphered() {
+            for (let i = 1; i < 6; i++) {
+                console.log("outer loop: " + i);
+                for (j = 1; j < 3; j++) {
+                    console.log("inner loop: " + j);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
