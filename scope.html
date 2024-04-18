@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scope</title>
+</head>
+<body>
+    <script>
+
+        //global scope, accessible everywhere
+        //block scope, only accessible within its assigned {} if placed inside them
+        //lexical scope, accessibility determined by location in the source code's structure.
+        //OR: innerFunction = Jeff Bezos, -Teddy Smith
+
+
+        //js, function scope first, then moved to block scope
+
+        //{ } control scope
+        //each scope is its own world
+        //function scope unique to js
+        
+        example
+        function log1(){
+            let value = "value";
+        }
+            console.log2();     //not accessible outside {}, this does not work
+
+
+        function log2(){
+            let value = "value";
+            console.log(value);     //is accessible, console.log within {}
+        }
+
+
+        function varLetConst() {
+        var x = 10; // Function-scoped variable
+        let y = 20; // Block-scoped variable
+        const z = 30; // Block-scoped constant
+
+        if (true) {
+            var innerX = 100; // Still accessible outside the block
+            let innerY = 200; // Only accessible within this block
+            const innerZ = 300; // Only accessible within this block
+            console.log(x); // Output: 10
+            console.log(y); // Output: 20
+            console.log(z); // Output: 30
+            console.log(innerX); // Output: 100
+            console.log(innerY); // Output: 200
+            console.log(innerZ); // Output: 300
+        }
+
+        // console.log(innerX); // Error: innerX is not defined here
+        // console.log(innerY); // Error: innerY is not defined here
+        // console.log(innerZ); // Error: innerZ is not defined here
+}
+
+
+        /*let and const have scope rules when it comes to exmpl if else & for loops*/
+
+        /*
+        Lexical scope in, variables defined in outer func are 
+        accessible within inner func, but not vice versa. 
+        Each func creates its own scope,
+        inner func can access variables from their containing (outer) scope.*/
+        
+        function outerFunction() {
+        let outside = 'outsideee';
+
+        function innerFunction() {
+        console.log(outside); // Accessing outerVar from the outer function
+        }};
+
+
+
+    </script>
+</body>
+</html>
